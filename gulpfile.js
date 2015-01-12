@@ -151,8 +151,9 @@ gulp.task('watch-mode', function() {
   testWatcher.on('change', changeNotification);
 });
 
-gulp.task('assets', ['css', 'js', 'lint', 'image']);
-gulp.task('all', ['assets', 'karma', 'protractor']);
+gulp.task('assets', ['css', 'js', 'lint', 'image', 'template']);
+gulp.task('all', ['assets', 'karma', 'connect', 'protractor']);
+gulp.task('build', ['assets', 'karma']);
 gulp.task('default', ['watch-mode', 'all']);
 gulp.task('server', ['connect', 'default']);
 gulp.task('test', ['debug', 'connect', 'all']);
