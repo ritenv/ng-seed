@@ -1,3 +1,14 @@
+/**
+ * The awesome ASCII Art
+ */
+console.log(['',
+"                                |",
+",---.,---.   ,---.,---.,---.,---|",
+"|   ||   |---`---.|---'|---'|   |",
+"`   '`---|   `---'`---'`---'`---'",
+"     `---'                       ",
+''].join('\n'));
+
 var path = require('path'),
     gulp = require('gulp'),
     uglify = require('gulp-uglify'),
