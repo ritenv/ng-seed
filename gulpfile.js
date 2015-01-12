@@ -105,7 +105,7 @@ gulp.task('protractor', function(done) {
     .pipe(protractor({
       configFile: 'protractor.conf.js',
       args: [
-        '--baseUrl', 'http://127.0.0.1:8080',
+        '--baseUrl', 'http://127.0.0.1:9999',
         '--browser', program.browsers ? program.browsers[0] : 'phantomjs'
       ]
     }))
