@@ -1,8 +1,5 @@
 .DS_Store
 .idea/
 node_modules/
-public/css/
-public/js/
-public/image/
-public/template/
+public/
 npm-debug.log
