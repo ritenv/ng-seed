@@ -24,11 +24,9 @@ define(
           // Disables Strict Contextual Escaping for IE8 compatibility
           $sceProvider.enabled(false);
 
-//          // Commented out for use on GitHub Pages
-//          // Only use html5Mode for modern browsers
-//          if (window.history && history.pushState) {
-//            $locationProvider.html5Mode(true);
-//          }
+         if (window.history && history.pushState) {
+           $locationProvider.html5Mode(true);
+         }
         }
       ]);
   }

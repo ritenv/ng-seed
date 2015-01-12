@@ -121,7 +121,8 @@ gulp.task('connect', function() {
   }
 
   connect.server({
-    livereload: mode === WATCH_MODE
+    livereload: mode === WATCH_MODE,
+    port: 9999
   });
 });
 

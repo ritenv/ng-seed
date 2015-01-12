@@ -37,4 +37,4 @@
 
 #### More
 
-To be continued.
+Install Java from here: http://support.apple.com/kb/DL1572
