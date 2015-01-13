@@ -5,7 +5,9 @@
          `---'                       
      
 
-![superman-logo](https://raw.githubusercontent.com/ritenv/ng-seed/master/content/superman-logo.jpg) *A super-heroic AngularJS seed base.*
+#### About
+
+![superman-logo](https://raw.githubusercontent.com/ritenv/ng-seed/master/content/superman-logo.jpg) <br>*ng-seed is a super-heroic AngularJS seed base. It is scaffolded with an awesome stack of tools that kickstart the dev process, and keep the journey pleasant. The power of `SASS`, benefits of `gulp`, flexibility of `mocha`,  pros of `RequireJS` and known utility of `AngularJS` makes this a complete seed for scalable, standard application architecture.*
 
 #### ng-seed includes:
 * **Application**
@@ -42,6 +44,3 @@ The app consists of `prestart` and `postinstall` scripts that will ensure instal
 * Run ```gulp server``` or ```gulp debug server``` if you want the default task run and your files served by a development HTTP server (includes livereload)
 * Run ```gulp test``` to execute a single run of tests.
 
-#### More
-
-To be continued.
