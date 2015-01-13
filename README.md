@@ -4,7 +4,8 @@
     `   '`---|   `---'`---'`---'`---'
          `---'                       
      
-*An AngularJS seed project for basing future projects.*
+
+![superman-logo](https://raw.githubusercontent.com/ritenv/ng-seed/master/content/superman-logo.jpg) *A super-heroic AngularJS seed base.*
 
 #### ng-seed includes:
 * **Application**
