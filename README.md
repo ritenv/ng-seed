@@ -25,8 +25,7 @@
     * [Mocha](http://mochajs.org/) - Testing framework
     * [Chai](http://chaijs.com/) - Super-flexible assertion library
     * [Protractor](https://github.com/angular/protractor/) - End-to-end test runner
-* **Style**
-    * [airbnb/javascript](https://github.com/airbnb/javascript/) - JavaScript Style Guide
+    * [Istanbul](http://gotwarlost.github.io/istanbul/) - Coverage report generator
 
 #### Instructions:
 

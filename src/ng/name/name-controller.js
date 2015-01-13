@@ -1,14 +1,14 @@
 define(
   [
     'angular',
-    'js/service/name-service',
-    'js/directive/name-directive'
+    'ng/name/name-service',
+    'ng/name/name-directive'
   ],
   function(angular) {
     'use strict';
 
     angular
-      .module('ng-seed.home-controller', [
+      .module('ng-seed.name-controller', [
         'ng-seed.name-service',
         'ng-seed.name-directive'
       ])

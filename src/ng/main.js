@@ -4,7 +4,7 @@
 
   require([
     'angular',
-    'js/app'
+    'ng/app'
   ], function (angular) {
     // Needs to be separate from app since we don't want to bootstrap to
     // document when running tests
