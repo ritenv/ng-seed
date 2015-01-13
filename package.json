@@ -1,21 +1,21 @@
 {
-  "name": "ng-boilerplate",
-  "version": "1.2.0",
-  "description": "A base for front-end development with AngularJS",
+  "name": "ng-seed",
+  "version": "0.0.1",
+  "description": "A seed base for AngularJS apps",
   "main": "index.html",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ianwalter/ng-boilerplate.git"
+    "url": "git://github.com/ritenv/ng-seed.git"
   },
-  "author": "Ian Kennington Walter (http://ianvonwalter.com)",
+  "author": "Riten Vagadiya (http://riten.io/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ianwalter/ng-boilerplate/issues"
+    "url": "https://github.com/ritenv/ng-seed/issues"
   },
-  "homepage": "https://github.com/ianwalter/ng-boilerplate",
+  "homepage": "https://github.com/ritenv/ng-seed",
   "devDependencies": {
     "chai": "~1.9.0",
     "commander": "^2.4.0",

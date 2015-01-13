@@ -4,7 +4,7 @@ define(
     'use strict';
 
     angular
-      .module('ng-boilerplate.name-directive', ['ng-boilerplate.name-service'])
+      .module('ng-seed.name-directive', ['ng-seed.name-service'])
       .directive('nameFormat', ['NameService', function(NameService) {
         return {
           scope: {

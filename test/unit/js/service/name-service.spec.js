@@ -7,7 +7,7 @@ define(
   function() {
     describe('NameService', function() {
 
-      beforeEach(module('ng-boilerplate'));
+      beforeEach(module('ng-seed'));
 
       var NameService;
       beforeEach(inject(function (_NameService_) {
@@ -16,8 +16,8 @@ define(
 
       describe('#formatName()', function() {
         it('should title case a given string', function() {
-          expect(NameService.formatName('IAN')).to.equal('Ian');
-          expect(NameService.formatName('bill murray')).to.equal('Bill Murray');
+          expect(NameService.formatName('John')).to.equal('John');
+          expect(NameService.formatName('john doe')).to.equal('John Doe');
         });
       });
 

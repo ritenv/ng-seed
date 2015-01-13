@@ -8,7 +8,7 @@ define(
     'use strict';
 
     angular
-      .module('ng-boilerplate', ['ngRoute', 'ng-boilerplate.home-controller'])
+      .module('ng-seed', ['ngRoute', 'ng-seed.home-controller'])
       .config([
         '$routeProvider',
         '$sceProvider',

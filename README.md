@@ -30,6 +30,7 @@
 * Run bower in the ng-seed directory to install front-end dependencies: ```bower install```.
 * Install gulp using ```sudo npm install gulp -g```. 
 * Install the gulp plugins: ```npm install```.
+* Install Java from here, if prompted: <a target="_blank" href="http://support.apple.com/kb/DL1572">http://support.apple.com/kb/DL1572</a> (to run `Selenium`)
 * Run ```gulp``` to compile, minify, lint and test front-end assets.
 * Run ```gulp debug default``` while you are developing so that you can use the unminified version of your assets.
 * Run ```gulp server``` or ```gulp debug server``` if you want the default task run and your files served by a development HTTP server (includes livereload)

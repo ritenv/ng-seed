@@ -4,7 +4,7 @@ define(
     'use strict';
 
     angular
-      .module('ng-boilerplate.name-service', [])
+      .module('ng-seed.name-service', [])
       .factory('NameService', function() {
         return {
           formatName: function(names) {
