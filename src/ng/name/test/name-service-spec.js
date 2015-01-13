@@ -1,8 +1,8 @@
 define(
   [
     'angular-mocks',
-    'js/app',
-    'js/service/name-service'
+    'ng/app',
+    'ng/name/name-service'
   ],
   function() {
     describe('NameService', function() {

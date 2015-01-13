@@ -40,11 +40,12 @@ program
   .parse(process.argv);
 
 gulp.task('js', function() {
-  var jsTask = gulp.src('src/js/**/*.js');
+  var jsTask = gulp.src('src/ng/**/*.js');
   if (!debug) {
-    jsTask.pipe(uglify());
+    var uglifyFiles = gulp.src('src/ng/**/!(*-spec).js');
+    uglifyFiles.pipe(uglify());
   }
-  jsTask.pipe(gulp.dest('public/js'))
+  jsTask.pipe(gulp.dest('public/ng'))
     .pipe(connect.reload());
 });
 
@@ -144,7 +145,7 @@ gulp.task('debug', function() {
 gulp.task('watch-mode', function() {
   mode = WATCH_MODE;
 
-  var jsWatcher = gulp.watch('src/js/**/*.js', ['js']),
+  var jsWatcher = gulp.watch('src/ng/**/*.js', ['js']),
     cssWatcher = gulp.watch('src/sass/**/*.scss', ['css', 'protractor']),
     imageWatcher = gulp.watch('src/image/**/*', ['image']),
     htmlWatcher = gulp.watch('src/template/**/*.html',
