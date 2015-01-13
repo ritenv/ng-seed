@@ -26,11 +26,15 @@
     * [airbnb/javascript](https://github.com/airbnb/javascript/) - JavaScript Style Guide
 
 #### Instructions:
+
+**Getting started**
 * Install bower using ```sudo npm install bower -g```.
-* Run bower in the ng-seed directory to install front-end dependencies: ```bower install```.
-* Install gulp using ```sudo npm install gulp -g```. 
-* Install the gulp plugins: ```npm install```.
+* Install gulp using ```sudo npm install gulp -g```.
+* Run: ```npm start```.
 * Install Java from here, if prompted: <a target="_blank" href="http://support.apple.com/kb/DL1572">http://support.apple.com/kb/DL1572</a> (to run `Selenium`)
+
+The app consists of `prestart` and `postinstall` scripts that will ensure installation of `npm` dependencies and `bower` components. No need to install manually.
+
 * Run ```gulp``` to compile, minify, lint and test front-end assets.
 * Run ```gulp debug default``` while you are developing so that you can use the unminified version of your assets.
 * Run ```gulp server``` or ```gulp debug server``` if you want the default task run and your files served by a development HTTP server (includes livereload)
