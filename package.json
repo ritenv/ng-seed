@@ -4,6 +4,12 @@
   "description": "A seed base for AngularJS apps",
   "main": "index.html",
   "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "gulp serve",
+
+    "pretest": "npm install",
     "test": "gulp test"
   },
   "repository": {
