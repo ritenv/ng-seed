@@ -19,24 +19,17 @@
     <ol class="default-ol">
       <li>
         Install bower using <code>sudo npm install bower -g</code>.
-        Then run bower in the ngbp directory to install front-end dependencies: <code>bower install</code>.
       </li>
       <li>
         Install gulp using <code>sudo npm install gulp -g</code>.
-        Then install the gulp plugins: <code>npm install</code>.
       </li>
       <li>
-        Install Java from here, if prompted: <a target="_blank" href="http://support.apple.com/kb/DL1572">http://support.apple.com/kb/DL1572</a> (to run <code>Selenium</code>)
+        Install Java from here: <a target="_blank" href="http://support.apple.com/kb/DL1572">http://support.apple.com/kb/DL1572</a> (to run <code>Selenium</code>)<br>
+        Skip this step if you think you have Java. You will be prompted later if you don't already have it.
       </li>
       <li>
-        Run <code>gulp</code> to compile, minify and lint front-end assets.
-      </li>
-      <li>
-        Run <code>gulp debug default</code> while you are developing so that you can use the unminified version of your assets.
-      </li>
-      <li>
-        Run <code>gulp server</code> or <code>gulp debug server</code> if you want the default task run and your files served by a development HTTP server
-        (includes livereload)
+        Run <code>npm start</code>.<br>
+        The app consists of <code>prestart</code> and <code>postinstall</code> scripts that will ensure installation of <code>npm</code> dependencies and <code>bower</code> components. No need to install manually.
       </li>
     </ol>
     <br>
