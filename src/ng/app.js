@@ -2,13 +2,13 @@ define(
   [
     'angular',
     'angular-route',
-    'js/controller/home-controller'
+    'ng/name/name-controller'
   ],
   function(angular) {
     'use strict';
 
     angular
-      .module('ng-seed', ['ngRoute', 'ng-seed.home-controller'])
+      .module('ng-seed', ['ngRoute', 'ng-seed.name-controller'])
       .config([
         '$routeProvider',
         '$sceProvider',

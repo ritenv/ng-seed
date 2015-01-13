@@ -40,11 +40,11 @@ program
   .parse(process.argv);
 
 gulp.task('js', function() {
-  var jsTask = gulp.src('src/js/**/*.js');
+  var jsTask = gulp.src('src/ng/**/*.js');
   if (!debug) {
-    jsTask.pipe(uglify());
+    //jsTask.pipe(uglify());
   }
-  jsTask.pipe(gulp.dest('public/js'))
+  jsTask.pipe(gulp.dest('public/ng'))
     .pipe(connect.reload());
 });
 
@@ -87,21 +87,30 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('karma', function() {
+gulp.task('karma', function(cb) {
   // undefined.js: unfortunately necessary for now
-  return gulp.src(['undefined.js'])
+  //return 
+  gulp.src(['undefined.js'])
     .pipe(karma({
       configFile: 'karma.conf.js',
       action: mode,
       tests: program.tests,
-      reporters: program.reporters || ['progress'],
+      reporters: program.reporters || ['progress', 'coverage'],
+      coverageReporter: {
+        type : 'html',
+        dir : 'coverage/'
+      },
+      preprocessors: {
+        'public/ng/**/!(*-spec|*-config|app|main).js': ['coverage']
+      },
       browsers: program.browsers || ['PhantomJS']
     }))
-    .on('error', function() {});
+    .on('error', function() {})
+    .on('end', cb);
 });
 
 gulp.task('protractor', function(done) {
-  gulp.src(["test/ui/**/*.js"])
+  gulp.src(["src/**/*-spec-ui.js"])
     .pipe(protractor({
       configFile: 'protractor.conf.js',
       args: [
@@ -144,12 +153,12 @@ gulp.task('debug', function() {
 gulp.task('watch-mode', function() {
   mode = WATCH_MODE;
 
-  var jsWatcher = gulp.watch('src/js/**/*.js', ['js']),
+  var jsWatcher = gulp.watch('src/ng/**/*.js', ['js']),
     cssWatcher = gulp.watch('src/sass/**/*.scss', ['css', 'protractor']),
     imageWatcher = gulp.watch('src/image/**/*', ['image']),
     htmlWatcher = gulp.watch('src/template/**/*.html',
       ['template', 'protractor']),
-    testWatcher = gulp.watch('test/**/*.js', ['karma', 'protractor']);
+    testWatcher = gulp.watch('src/**/*-spec*.js', ['karma', 'protractor']);
 
   function changeNotification(event) {
     console.log('File', event.path, 'was', event.type, ', running tasks...');
