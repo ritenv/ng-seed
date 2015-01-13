@@ -35,6 +35,7 @@
 
 The app consists of `prestart` and `postinstall` scripts that will ensure installation of `npm` dependencies and `bower` components. No need to install manually.
 
+**Other commands**
 * Run ```gulp``` to compile, minify, lint and test front-end assets.
 * Run ```gulp debug default``` while you are developing so that you can use the unminified version of your assets.
 * Run ```gulp server``` or ```gulp debug server``` if you want the default task run and your files served by a development HTTP server (includes livereload)
