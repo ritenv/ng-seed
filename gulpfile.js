@@ -101,7 +101,7 @@ gulp.task('karma', function() {
 });
 
 gulp.task('protractor', function(done) {
-  gulp.src(["test/ui/**/*.js"])
+  gulp.src(["src/**/*-spec-ui.js"])
     .pipe(protractor({
       configFile: 'protractor.conf.js',
       args: [
@@ -149,7 +149,7 @@ gulp.task('watch-mode', function() {
     imageWatcher = gulp.watch('src/image/**/*', ['image']),
     htmlWatcher = gulp.watch('src/template/**/*.html',
       ['template', 'protractor']),
-    testWatcher = gulp.watch('test/**/*.js', ['karma', 'protractor']);
+    testWatcher = gulp.watch('src/**/*-spec*.js', ['karma', 'protractor']);
 
   function changeNotification(event) {
     console.log('File', event.path, 'was', event.type, ', running tasks...');
