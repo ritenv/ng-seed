@@ -19,7 +19,6 @@ var path = require('path'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
-    istanbul = require('gulp-istanbul'),
     protractor = require("gulp-protractor").protractor,
     program = require('commander'),
     stylish = require('jshint-stylish'),
@@ -92,31 +91,22 @@ gulp.task('karma', function(cb) {
   // undefined.js: unfortunately necessary for now
   //return 
   gulp.src(['undefined.js'])
-        //istanbul will come here
-        .pipe(karma({
-          configFile: 'karma.conf.js',
-          action: mode,
-          tests: program.tests,
-          reporters: program.reporters || ['progress', 'coverage'],
-          coverageReporter: {
-            type : 'html',
-            dir : 'coverage/'
-          },
-          preprocessors: {
-            'public/ng/**/!(*-spec|*-config|app|main).js': ['coverage']
-          },
-          browsers: program.browsers || ['PhantomJS']
-        }))
-        // .pipe(istanbul.writeReports()) // Creating the reports after tests runned
-        .on('error', function() {})
-        .on('end', cb);
-  // gulp.src(['src/**/!(*-spec).js'])
-  // .pipe(istanbul()) // Covering files
-  // .pipe(istanbul.hookRequire()) // Force `require` to return covered files
-  // .on('finish', function () {
-      
-  // });
-  
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: mode,
+      tests: program.tests,
+      reporters: program.reporters || ['progress', 'coverage'],
+      coverageReporter: {
+        type : 'html',
+        dir : 'coverage/'
+      },
+      preprocessors: {
+        'public/ng/**/!(*-spec|*-config|app|main).js': ['coverage']
+      },
+      browsers: program.browsers || ['PhantomJS']
+    }))
+    .on('error', function() {})
+    .on('end', cb);
 });
 
 gulp.task('protractor', function(done) {
