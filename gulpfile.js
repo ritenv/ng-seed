@@ -20,7 +20,6 @@ var path = require('path'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
     protractor = require("gulp-protractor").protractor,
-    program = require('commander'),
     stylish = require('jshint-stylish'),
     debug = false,
     WATCH_MODE = 'watch',
@@ -31,13 +30,6 @@ var mode = RUN_MODE;
 function list(val) {
   return val.split(',');
 }
-
-program
-  .version('0.0.1')
-  .option('-t, --tests [glob]', 'Specify which tests to run')
-  .option('-b, --browsers <items>', 'Specify which browsers to run on', list)
-  .option('-r, --reporters <items>', 'Specify which reporters to use', list)
-  .parse(process.argv);
 
 gulp.task('js', function() {
   var jsTask = gulp.src('src/ng/**/*.js');
@@ -94,8 +86,7 @@ gulp.task('karma', function(cb) {
     .pipe(karma({
       configFile: 'karma.conf.js',
       action: mode,
-      tests: program.tests,
-      reporters: program.reporters || ['progress', 'coverage'],
+      reporters: ['progress', 'coverage'],
       coverageReporter: {
         type : 'html',
         dir : 'coverage/'
@@ -103,7 +94,7 @@ gulp.task('karma', function(cb) {
       preprocessors: {
         'public/ng/**/!(*-spec|*-config|app|main).js': ['coverage']
       },
-      browsers: program.browsers || ['PhantomJS']
+      browsers: ['PhantomJS']
     }))
     .on('error', function() {})
     .on('end', cb);
@@ -115,7 +106,7 @@ gulp.task('protractor', function(done) {
       configFile: 'protractor.conf.js',
       args: [
         '--baseUrl', 'http://127.0.0.1:9999',
-        '--browser', program.browsers ? program.browsers[0] : 'phantomjs'
+        '--browser', 'phantomjs'
       ]
     }))
     .on('end', function() {
