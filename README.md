@@ -43,3 +43,5 @@ The app consists of `prestart` and `postinstall` scripts that will ensure instal
 * Run ```gulp server``` or ```gulp debug server``` if you want the default task run and your files served by a development HTTP server (includes livereload)
 * Run ```gulp test``` to execute a single run of tests.
 
+#### Travis
+This repo is linked with Travis CI for build testing.
