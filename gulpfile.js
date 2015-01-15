@@ -14,12 +14,10 @@ var path = require('path'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
     connect = require('gulp-connect'),
-    karma = require('gulp-karma'),
     jshint = require('gulp-jshint'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
-    protractor = require("gulp-protractor").protractor,
     stylish = require('jshint-stylish'),
     debug = false,
     WATCH_MODE = 'watch',
@@ -32,9 +30,14 @@ function list(val) {
 }
 
 gulp.task('js', function() {
-  var jsTask = gulp.src('src/ng/**/*.js');
-  if (!debug) {
-    //jsTask.pipe(uglify());
+  var jsTask;
+  if (process.env.npm_config_production) {
+    jsTask = gulp.src('src/ng/**/!(*-spec).js');
+    if (!debug) {
+      jsTask.pipe(uglify());
+    }
+  } else {
+    jsTask = gulp.src('src/ng/**/*.js');
   }
   jsTask.pipe(gulp.dest('public/ng'))
     .pipe(connect.reload());
@@ -79,49 +82,54 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('karma', function(cb) {
-  // undefined.js: unfortunately necessary for now
-  //return 
-  gulp.src(['undefined.js'])
-    .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: mode,
-      reporters: ['progress', 'coverage'],
-      coverageReporter: {
-        type : 'html',
-        dir : 'coverage/'
-      },
-      preprocessors: {
-        'public/ng/**/!(*-spec|*-config|app|main).js': ['coverage']
-      },
-      browsers: ['PhantomJS']
-    }))
-    .on('error', function() {})
-    .on('end', cb);
-});
+if (!process.env.npm_config_production) {
+  var karma = require('gulp-karma'),
+      protractor = require("gulp-protractor").protractor;
 
-gulp.task('protractor', function(done) {
-  gulp.src(["src/**/*-spec-ui.js"])
-    .pipe(protractor({
-      configFile: 'protractor.conf.js',
-      args: [
-        '--baseUrl', 'http://127.0.0.1:9999',
-        '--browser', 'phantomjs'
-      ]
-    }))
-    .on('end', function() {
-      if (mode === RUN_MODE) {
-        connect.serverClose();
-      }
-      done();
-    })
-    .on('error', function() {
-      if (mode === RUN_MODE) {
-        connect.serverClose();
-      }
-      done();
-    });
-});
+  gulp.task('karma', function(cb) {
+    // undefined.js: unfortunately necessary for now
+    //return 
+    gulp.src(['undefined.js'])
+      .pipe(karma({
+        configFile: 'karma.conf.js',
+        action: mode,
+        reporters: ['progress', 'coverage'],
+        coverageReporter: {
+          type : 'html',
+          dir : 'coverage/'
+        },
+        preprocessors: {
+          'public/ng/**/!(*-spec|*-config|app|main).js': ['coverage']
+        },
+        browsers: ['PhantomJS']
+      }))
+      .on('error', function() {})
+      .on('end', cb);
+  });
+
+  gulp.task('protractor', function(done) {
+    gulp.src(["src/**/*-spec-ui.js"])
+      .pipe(protractor({
+        configFile: 'protractor.conf.js',
+        args: [
+          '--baseUrl', 'http://127.0.0.1:' + (process.env.PORT || 9999),
+          '--browser', 'phantomjs'
+        ]
+      }))
+      .on('end', function() {
+        if (mode === RUN_MODE) {
+          connect.serverClose();
+        }
+        done();
+      })
+      .on('error', function() {
+        if (mode === RUN_MODE) {
+          connect.serverClose();
+        }
+        done();
+      });
+  });
+}
 
 gulp.task('connect', function() {
   if (mode === WATCH_MODE) {
@@ -133,7 +141,7 @@ gulp.task('connect', function() {
 
   connect.server({
     livereload: mode === WATCH_MODE,
-    port: 9999
+    port: (process.env.PORT || 9999)
   });
 });
 
@@ -166,5 +174,5 @@ gulp.task('assets', ['css', 'js', 'lint', 'image', 'template']);
 gulp.task('all', ['assets', 'karma', 'connect', 'protractor']);
 gulp.task('build', ['assets', 'karma']);
 gulp.task('default', ['watch-mode', 'all']);
-gulp.task('serve', ['assets', 'connect', 'default']);
+gulp.task('serve', ['assets', 'connect']);
 gulp.task('test', ['debug', 'connect', 'all']);
