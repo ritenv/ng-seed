@@ -176,3 +176,4 @@ gulp.task('build', ['assets', 'karma']);
 gulp.task('default', ['watch-mode', 'all']);
 gulp.task('serve', ['assets', 'connect']);
 gulp.task('test', ['debug', 'connect', 'all']);
+
