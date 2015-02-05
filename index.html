@@ -1,27 +1,21 @@
-<div class="" data-ng-controller="CommentsController">
-  <h1>Example view from your new awesome package</h1>
-  <h2>Package: {{package.name}}</h2>
-  <ol>
-    <li>
-      <a href="comments/example/anyone">Server route that anyone can access</a>
-    </li>
-    <li>
-      <a href="comments/example/auth">Server route that requires authentication</a>
-    </li>
-    <li>
-      <a href="comments/example/admin">Server route that requires admin user</a>
-    </li>
-    <li>
-      <a href="comments/example/render">Raw Html rendering example from using swig</a>
-    </li>
-  </ol>
-  <h3><img src="/comments/assets/img/logo.png" /></h3>
-  </br>
-  <p class="alert alert-info">You can find your package in /packages/comments</p>
-  </br>
-  <p class="alert alert-warning">MEAN versions prior to 0.3.2 will be in /node_modules/comments</p>
-  </br>
-  <h3><a href="http://www.mean.io/#!/docs">Documentation</a></h3>
-  </br>
-</div>
+<!doctype html>
+<!--[if lt IE 7]>      <template class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <template class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <template class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>ng-seed</title>
 
+    <link rel="stylesheet" href="public/css/app.css" />
+
+    <script type="text/javascript" src="public/ng/requirejs-config.js"></script>
+    <script src="public/lib/requirejs/require.js" data-main="public/ng/main"></script>
+  </head>
+  <body>
+    <section ng-view ng-cloak></section>
+  </body>
+</html>
