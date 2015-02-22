@@ -1,5 +1,5 @@
 var requirejsConfig = { // jshint ignore:line
-  baseUrl: 'public/',
+  baseUrl: '/',
   paths: {
     'angular': [
       'lib/angular/angular'

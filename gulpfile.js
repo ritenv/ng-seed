@@ -31,13 +31,9 @@ function list(val) {
 
 gulp.task('js', function() {
   var jsTask;
-  if (process.env.npm_config_production) {
-    jsTask = gulp.src('src/ng/**/!(*-spec).js');
-    if (!debug) {
-      jsTask.pipe(uglify());
-    }
-  } else {
-    jsTask = gulp.src('src/ng/**/*.js');
+  jsTask = gulp.src('src/ng/**/!(*-spec).js');
+  if (!debug) {
+    jsTask.pipe(uglify());
   }
   jsTask.pipe(gulp.dest('public/ng'))
     .pipe(connect.reload());
@@ -67,6 +63,14 @@ gulp.task('css', function() {
   }
   cssTask.pipe(gulp.dest('public/css'))
     .pipe(connect.reload());
+});
+
+gulp.task('html', function() {
+  var htmlTask = gulp.src('src/*.html')
+  htmlTask
+  .pipe(htmlmin({ collapseWhitespace: true }))
+  .pipe(gulp.dest('public/'))
+  .pipe(connect.reload());
 });
 
 gulp.task('image', function () {
@@ -133,14 +137,15 @@ if (!process.env.npm_config_production) {
 
 gulp.task('connect', function() {
   if (mode === WATCH_MODE) {
-    gulp.watch(['index.html'], function() {
-      gulp.src(['index.html'])
+    gulp.watch(['public/index.html'], function() {
+      gulp.src(['public/index.html'])
         .pipe(connect.reload());
     });
   }
 
   connect.server({
     livereload: mode === WATCH_MODE,
+    root: 'public',
     port: (process.env.PORT || 9999)
   });
 });
@@ -155,8 +160,8 @@ gulp.task('watch-mode', function() {
   var jsWatcher = gulp.watch('src/ng/**/*.js', ['js']),
     cssWatcher = gulp.watch('src/sass/**/*.scss', ['css', 'protractor']),
     imageWatcher = gulp.watch('src/image/**/*', ['image']),
-    htmlWatcher = gulp.watch('src/template/**/*.html',
-      ['template', 'protractor']),
+    htmlWatcher = gulp.watch('src/template/**/*.html', ['template', 'protractor']),
+    indexWatcher = gulp.watch('src/*.html', ['html']),
     testWatcher = gulp.watch('src/**/*-spec*.js', ['karma', 'protractor']);
 
   function changeNotification(event) {
@@ -170,9 +175,9 @@ gulp.task('watch-mode', function() {
   testWatcher.on('change', changeNotification);
 });
 
-gulp.task('assets', ['css', 'js', 'lint', 'image', 'template']);
+gulp.task('assets', ['css', 'js', 'html', 'lint', 'image', 'template']);
 gulp.task('all', ['assets', 'karma', 'connect', 'protractor']);
-gulp.task('build', ['assets', 'karma']);
+gulp.task('build', ['assets']);
 gulp.task('default', ['watch-mode', 'all']);
 gulp.task('serve', ['assets', 'connect']);
 gulp.task('test', ['debug', 'connect', 'all']);
