@@ -11,7 +11,7 @@ module.exports = function(config) {
   if (options.tests) {
     testFiles.push({ pattern: 'test/unit/' + options.test, included: false });
   } else {
-    testFiles.push({ pattern: 'public/**/*-spec.js', included: false });
+    testFiles.push({ pattern: 'src/**/*-spec.js', included: false });
   }
 
   config.set({
