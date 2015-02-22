@@ -1,3 +1,6 @@
+![travis-build](https://api.travis-ci.org/ritenv/ng-seed.svg)
+
+
                                     |
     ,---.,---.   ,---.,---.,---.,---|
     |   ||   |---`---.|---'|---'|   |
@@ -6,7 +9,6 @@
      
 
 #### About
-
 ![superman-logo](https://raw.githubusercontent.com/safarna/ng-seed/master/content/superman-logo.jpg) <br>*ng-seed is a super-heroic AngularJS seed base. It is scaffolded with an awesome stack of tools that kickstart the dev process, and keep the journey pleasant. The power of `Sass`, benefits of `gulp`, flexibility of `mocha`,  pros of `RequireJS` and known utility of `AngularJS` make this a complete seed for scalable, standard application architecture.*
 
 #### ng-seed includes:
